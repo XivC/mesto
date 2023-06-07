@@ -5,6 +5,7 @@ import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import ru.ifmo.db.Driver
 import ru.ifmo.plugins.*
+import ru.ifmo.services.EventService
 
 fun main(args: Array<String>) {
     Driver.init(args)
@@ -15,4 +16,5 @@ fun main(args: Array<String>) {
 fun Application.module() {
     configureSerialization()
     configureRouting()
+
 }
