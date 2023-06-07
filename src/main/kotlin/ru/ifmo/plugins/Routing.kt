@@ -19,39 +19,26 @@ fun Application.configureRouting() {
 fun Route.eventRoutes(handler: ru.ifmo.handlers.EventHandler) {
     route("/events") {
         get {
-            call.respond(handler.getAllEvents())
+            handler.getAllEvents(call)
         }
 
         post {
-            val event = call.receive<Event>()
-            call.respond(HttpStatusCode.Created, handler.addEvent(event))
+
+              handler.addEvent(call)
         }
 
         route("/{id}") {
             get {
-                val id = call.parameters["id"]?.toInt()
-                if (id != null) {
-                    val event = handler.getEvent(id)
-                    if (event != null) {
-                        call.respond(event)
-                    } else {
-                        call.respond(HttpStatusCode.NotFound)
-                    }
+                handler.getEvent(call)
                 }
             }
 
             put {
-                val eventToUpdate = call.receive<Event>()
-                call.respond(handler.updateEvent(eventToUpdate))
+                handler.updateEvent(call)
             }
 
             delete {
-                val id = call.parameters["id"]?.toInt()
-                if (id != null) {
-                    handler.deleteEvent(id)
-                    call.respond(HttpStatusCode.NoContent)
+                handler.deleteEvent(call)
                 }
             }
         }
-    }
-}

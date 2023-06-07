@@ -2,6 +2,7 @@ package ru.ifmo.storage
 
 import io.ktor.network.sockets.*
 import ru.ifmo.db.Driver
+import ru.ifmo.db.Driver.getConnection
 import ru.ifmo.models.Event
 import ru.ifmo.models.Location
 import java.sql.Connection
@@ -9,10 +10,6 @@ import java.sql.SQLException
 import java.sql.Statement
 
 class EventStorage {
-    suspend fun getConnection(): Connection {
-        val connection = Driver.getConnection()
-        return connection
-    }
 
     suspend fun readEvents(): List<Event> {
         val connection = getConnection()
