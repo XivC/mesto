@@ -7,6 +7,7 @@ import org.flywaydb.core.Flyway
 import ru.ifmo.context.ApplicationContext
 import ru.ifmo.db.Driver
 import ru.ifmo.plugins.*
+import ru.ifmo.services.EventService
 
 fun main(args: Array<String>) {
     ApplicationContext.init(args)
@@ -18,4 +19,5 @@ fun main(args: Array<String>) {
 fun Application.module() {
     configureSerialization()
     configureRouting()
+
 }
