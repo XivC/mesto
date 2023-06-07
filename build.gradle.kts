@@ -6,7 +6,11 @@ plugins {
     kotlin("jvm") version "1.8.21"
     id("io.ktor.plugin") version "2.3.1"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.8.21"
+    id("org.flywaydb.flyway") version "9.8.1"
+
 }
+
+
 
 group = "ru.ifmo"
 version = "0.0.1"
@@ -21,6 +25,7 @@ repositories {
     mavenCentral()
 }
 
+
 dependencies {
     implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktor_version")
@@ -31,4 +36,6 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
     implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.5")
     implementation("org.postgresql:postgresql:42.5.4")
+    implementation("org.flywaydb:flyway-core:9.16.0")
 }
+
